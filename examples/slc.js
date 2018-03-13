@@ -20,18 +20,11 @@ const Nightmare = require('nightmare')
 googleEvents.scrape("events next week salt lake city utah")
 .then((res) => {
   console.log("it scrapes!", res)
-  // var str = ""
-  // res.events.forEach((itm, idx) => {
-  //   str = str + itm.html
-  // })
-  //
-  // fs.writeFile("./examples/test.html", str, function(err) {
-  //     if(err) {
-  //         return console.log(err);
-  //     }
-  //     console.log("The file was saved!");
-  // });
-
+  // Close electron
+  return googleEvents.end()
+})
+.then(() => {
+  console.log("did close!");
 })
 .catch(err => {
   console.error(err);

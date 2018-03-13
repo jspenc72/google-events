@@ -54,7 +54,7 @@ function scrape(query) {
           currentHeight = res.height;
           return nightmare
           .scrollTo(res.height, 0)
-          .wait(5 00);
+          .wait(500);
         })
         .then(() => {
           if (previousHeight !== currentHeight) {
@@ -75,16 +75,16 @@ function scrape(query) {
   })
   .then(() => {
     return nightmare
-    .evaluate((selector, done) => {
-      var nodelist = document.querySelectorAll(selector);
+    .evaluate((input, done) => {
+      var nodelist = document.querySelectorAll(input.selector);
       var linklist = document.querySelectorAll("g-inner-card > div > div > a")
-      var response = { events: [], count: nodelist.length, selector: selector }
+      var response = { events: [], count: nodelist.length, selector: input.selector, query: input.query }
       for (i = 0; i < nodelist.length; i++) {
         var target = {}
         var node = nodelist[i]
         var linkNode = linklist[i]
-        target.text = node.innerText
-        target.html = node.innerHTML
+        target.text = node.innerText.replace(/\n/g,"----+----")
+        // target.html = node.innerHTMLs
         target.link = node ? linkNode.getAttribute("href") : "";
         target.day = node ? node.querySelector("div > div:nth-child(1) > div:nth-child(1)").innerText : "";
         target.month = node ? node.querySelector("div > div:nth-child(1) > div:nth-child(2)").innerText : "";
@@ -98,7 +98,7 @@ function scrape(query) {
       setTimeout(() => {
         done(null, response);
       }, 1000);
-    }, "g-inner-card > div > div > a")
+    }, {query: query, selector: "g-inner-card > div > div > a"})
   })
 }
 
@@ -116,6 +116,9 @@ module.exports = function(opts) {
     },
     nightmare: function() {
       return nightmare
+    },
+    end: function() {
+      return nightmare.end()
     }
   };
 }
