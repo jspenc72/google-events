@@ -8,6 +8,7 @@ NodeJS Framework to obtain events from the google search api.
 
 
 ```js
+const  googleEvents = require('../index')({});
 googleEvents.scrape("events next week salt lake city utah")
 .then((res) => {
   // res looks like;
