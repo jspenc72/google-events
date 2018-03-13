@@ -2,6 +2,13 @@
 </h1>
 
 
+https://www.npmjs.com/package/google-events
+
+[![NPM](https://nodei.co/npm/google-events.png?downloads=true&downloadRank=true&stars=true)](https://nodei.co/npm/google-events/)
+[![NPM](https://nodei.co/npm-dl/google-events.png?months=3&height=3)](https://nodei.co/npm/google-events/)
+
+
+
 NodeJS Framework to obtain events from the google search api.
 
 
