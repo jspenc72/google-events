@@ -5,8 +5,6 @@ const moment = require('moment');
 const Rx = require('rxjs/Rx');
 const rp = require('request-promise');
 const _ = require('lodash');
-//MARK: Defaults
-var numResults = 10;
 
 function sendSearchRequest(query){
   var options = {
