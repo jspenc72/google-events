@@ -1,4 +1,4 @@
-<h1><img src="https://github.com/jspenc72/google-events/blob/master/img/ge.png|alt=googleevents"/>
+<h1><img src="https://github.com/jspenc72/google-events/blob/master/ge.jpg|alt=googleevents"/>
 </h1>
 
 
